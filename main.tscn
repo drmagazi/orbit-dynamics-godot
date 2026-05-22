@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dfstfxs4kipdb"]
+
+[ext_resource type="Script" uid="uid://7evvelu2anc6" path="res://planet.gd" id="1_ig7tw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1xs71"]
+albedo_color = Color(0.54, 0.16200002, 0.16200002, 1)
+emission = Color(0.7176471, 0.27058825, 0.28235295, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_pta2a"]
+material = SubResource("StandardMaterial3D_1xs71")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_10cye"]
+albedo_color = Color(0.24319999, 0.30933326, 0.64, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_uqkjs"]
+material = SubResource("StandardMaterial3D_10cye")
+
+[node name="Main" type="Node3D" unique_id=1360578186]
+
+[node name="SolarSystem" type="Node3D" parent="." unique_id=834980812]
+
+[node name="Star" type="StaticBody3D" parent="SolarSystem" unique_id=1559547698]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SolarSystem/Star" unique_id=1779744925]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("SphereMesh_pta2a")
+
+[node name="Planet" type="RigidBody3D" parent="SolarSystem" unique_id=42853987]
+gravity_scale = 0.0
+script = ExtResource("1_ig7tw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SolarSystem/Planet" unique_id=1251401209]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("SphereMesh_uqkjs")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=233705584]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 42.68, 0)
+projection = 1
+size = 75.0
